@@ -1,0 +1,22 @@
+Package: PhDProfiles
+Type: Package
+Title: Group of Functions for the Creation of PhD Profiles at Boston University
+Version: 0.1.0
+Author: John Stringer
+Maintainer: John Stringer <jstring@bu.edu>
+Description: More about what it does (maybe more than one line)
+    Use four spaces when indenting paragraphs within the Description.
+License: GPL
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.1.1
+Imports:
+    dplyr,
+    magrittr,
+    rlang,
+    stringr,
+    tidyr,
+    purrr,
+    forcats,
+    plotly,
+    readxl
