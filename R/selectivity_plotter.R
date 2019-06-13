@@ -22,7 +22,7 @@
 
 selectivity_plotter <- function(dfADM, l.color = c("#35618f"), theme_stripe = NULL,
                                 v.AppYear = AppYear, v.Selectivity = Selectivity,
-                                colorVar = Graduate.Application.HEGIS){
+                                colorVar = `Graduate Application HEGIS`){
   q.AppYear = enquo(v.AppYear)
   q.Selectivity = enquo(v.Selectivity)
   q.colorVar <- enquo(colorVar)
@@ -37,8 +37,8 @@ plSelectivity <- dfADM %>%
   geom_segment(aes(x = !! q.AppYear, xend = !! q.AppYear, y = 0, yend = !! q.Selectivity)) +
   geom_point(aes( x = !! q.AppYear, y = !! q.Selectivity, fill = !! q.colorVar,
                   color = !! q.colorVar,
-                  text = paste0("Application Year: ", !! q.AppYear,
-                                "\nSelectivity: ", percent( !! q.Selectivity))),
+                  text = paste0("Selectivity: ", percent( !! q.Selectivity),
+                                "\nApplications to Fall ", !! q.AppYear)),
              stat = 'identity', size = 5)+
   theme_minimal()+
   scale_fill_manual(values = l.color)+

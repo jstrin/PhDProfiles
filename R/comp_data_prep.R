@@ -82,12 +82,12 @@ dfCompletion <- dfCompletion_report %>%
          yr4 = ...4 + yr3,
          yr5 = ...5 +  yr4,
          yr6 = ...6 +  yr5,
-         yr7 = ...7..18 +  yr6,
-         yr8 = ...8+  yr7,
-         yr9 = ...9..22 +  yr8,
+         yr7 = ...7 +  yr6,
+         yr8 = ...8 +  yr7,
+         yr9 = ...9 +  yr8,
          yr10 = ...10 +  yr9,
          yr10plus = Completed.program.after.more.than.10.years +  yr10) %>%
-  select(-starts_with("..")) %>%
+  select(-starts_with("...")) %>%
   gather(Year, Count, yr3:yr10plus)%>%
   mutate(Per.Cohort = Count/Cohort.Size,
         AcadYear = 2000+ as.numeric(str_sub(Cohort.Year, start=4, end=5)),

@@ -34,7 +34,7 @@ plApps <- dfADM %>%
                            TRUE ~ as.character(""))) %>%
   ggplot()+
   geom_line( aes( x = AppYear, y = value, color = metric))+
-  geom_point(aes(x = AppYear, y = value, color = metric, text = paste0("Applicaiton Year: ", AppYear,
+  geom_point(aes(x = AppYear, y = value, color = metric, text = paste0("Fall ", AppYear,
                                                                        "\n", metric, ": ", value)), alpha = 0)+
   geom_text(aes(x = AppYear, y = value, label = label, color = metric ),
             hjust = 0, nudge_x = -0.5, nudge_y = n.Ynudge)+

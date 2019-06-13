@@ -97,33 +97,33 @@ attrition_data_prep <- function(dfAttrition_report){
                                  Hegis.Cd %in% c("0483") ~ "0408",
                                  Hegis.Cd %in% c("0484") ~ "0410",
                                  !Hegis.Cd %in% c("0477", "0478", "0479", "0482", "0480", "0481", "1346", "0483", "0484") ~ Hegis.Cd)) %>%
-    filter(Cohort.Year %in% c("02-03", "03-04", "04-05", "05-06", "06-07", "07-08", "08-09", "09-10", "10-11", "11-12", "12-13", "13-14", "14-15", "15-16", "16-17")) %>%
+    filter(Cohort.Year %in% c("01-02", "02-03", "03-04", "04-05", "05-06", "06-07", "07-08", "08-09", "09-10", "10-11", "11-12", "12-13", "13-14", "14-15", "15-16", "16-17")) %>%
     mutate(HEGIS = as.numeric(Hegis.Cd)) %>%
     group_by(Col, Hegis.Cd, Hegis.Description, HEGIS,  Cohort.Year) %>%
     summarise_if(is.numeric, sum, na.rm=FALSE) %>%
     ungroup()%>%
-    mutate(Without.MA_yr1 = Without.MA..8,
-           Without.MA_yr2 = Without.MA..15 + Without.MA_yr1,
-           Without.MA_yr3 = Without.MA..22 +  Without.MA_yr2,
-           Without.MA_yr4 = Without.MA..29 + Without.MA_yr3,
-           Without.MA_yr5 = Without.MA..36 +  Without.MA_yr4,
-           Without.MA_yr6 = Without.MA..43 +  Without.MA_yr5,
-           Without.MA_yr7 = Without.MA..50 +  Without.MA_yr6,
-           Without.MA_yr8 = Without.MA..57 +  Without.MA_yr7,
-           Without.MA_yr9 = Without.MA..64 +  Without.MA_yr8,
-           Without.MA_yr10 = Without.MA..71 +  Without.MA_yr9,
-           Without.MA_yr10plus = Without.MA..78 +   Without.MA_yr10,
-           With.MA_yr1 = With.MA..9,
-           With.MA_yr2 = With.MA..16 + With.MA_yr1,
-           With.MA_yr3 = With.MA..23 + With.MA_yr2,
-           With.MA_yr4 = With.MA..30 + With.MA_yr3,
-           With.MA_yr5 = With.MA..37 + With.MA_yr4,
-           With.MA_yr6 = With.MA..44 + With.MA_yr5,
-           With.MA_yr7 = With.MA..51 + With.MA_yr6,
-           With.MA_yr8 = With.MA..58 + With.MA_yr7,
-           With.MA_yr9 = With.MA..65 + With.MA_yr8,
-           With.MA_yr10 = With.MA..72 + With.MA_yr9,
-           With.MA_yr10plus = With.MA..79 + With.MA_yr10,
+    mutate(Without.MA_yr1 = Without.MA...8,
+           Without.MA_yr2 = Without.MA...15 + Without.MA_yr1,
+           Without.MA_yr3 = Without.MA...22 +  Without.MA_yr2,
+           Without.MA_yr4 = Without.MA...29 + Without.MA_yr3,
+           Without.MA_yr5 = Without.MA...36 +  Without.MA_yr4,
+           Without.MA_yr6 = Without.MA...43 +  Without.MA_yr5,
+           Without.MA_yr7 = Without.MA...50 +  Without.MA_yr6,
+           Without.MA_yr8 = Without.MA...57 +  Without.MA_yr7,
+           Without.MA_yr9 = Without.MA...64 +  Without.MA_yr8,
+           Without.MA_yr10 = Without.MA...71 +  Without.MA_yr9,
+           Without.MA_yr10plus = Without.MA...78 +   Without.MA_yr10,
+           With.MA_yr1 = With.MA...9,
+           With.MA_yr2 = With.MA...16 + With.MA_yr1,
+           With.MA_yr3 = With.MA...23 + With.MA_yr2,
+           With.MA_yr4 = With.MA...30 + With.MA_yr3,
+           With.MA_yr5 = With.MA...37 + With.MA_yr4,
+           With.MA_yr6 = With.MA...44 + With.MA_yr5,
+           With.MA_yr7 = With.MA...51 + With.MA_yr6,
+           With.MA_yr8 = With.MA...58 + With.MA_yr7,
+           With.MA_yr9 = With.MA...65 + With.MA_yr8,
+           With.MA_yr10 = With.MA...72 + With.MA_yr9,
+           With.MA_yr10plus = With.MA...79 + With.MA_yr10,
            Total_yr1 = Without.MA_yr1 + With.MA_yr1,
            Total_yr2 = Without.MA_yr2 + With.MA_yr2,
            Total_yr3 = Without.MA_yr3 + With.MA_yr3,
@@ -155,10 +155,10 @@ attrition_data_prep <- function(dfAttrition_report){
            Path = case_when(grepl("Without.", Pathyear) ~ "Without Masters",
                             grepl("With.", Pathyear) ~ "With Masters",
                             grepl("Total", Pathyear) ~ "Total"),
-           AcadYear = 2000+ as.numeric(stringr::str_sub(Cohort.Year, start=4, end=5))) %>%
-    mutate(Per.Cohort = Count/Cohort.Size)
+           AcadYear = 2000 + as.numeric( stringr::str_sub( Cohort.Year, start = 4, end = 5 ))) %>%
+    mutate( Per.Cohort = Count/Cohort.Size )
 
-lsOut <- list(dfAttrition_wide = dfAttrition_wide, dfAttrition_long = dfAttrition_long)
+lsOut <- list( dfAttrition_wide = dfAttrition_wide, dfAttrition_long = dfAttrition_long )
 
 lsOut
 }
